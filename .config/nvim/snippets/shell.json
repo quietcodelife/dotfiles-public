@@ -1,0 +1,40 @@
+{
+  "Strict shell script": {
+    "prefix": "safe",
+    "description": "Strict Bash/Zsh script header",
+    "body": [
+      "#!/usr/bin/env ${1:bash}",
+      "set -euo pipefail",
+      "",
+      "${2:main}() {",
+      "  ${3::}",
+      "}",
+      "",
+      "${2:main} \"$@\""
+    ]
+  },
+  "Shell case": {
+    "prefix": "case",
+    "description": "Shell case statement",
+    "body": [
+      "case \"${1:$value}\" in",
+      "  ${2:pattern})",
+      "    ${3::}",
+      "    ;;",
+      "  *)",
+      "    ${4::}",
+      "    ;;",
+      "esac"
+    ]
+  },
+  "Require command": {
+    "prefix": "requirecmd",
+    "description": "Check whether a command exists",
+    "body": [
+      "command -v ${1:cmd} >/dev/null 2>&1 || {",
+      "  echo \"Missing required command: ${1:cmd}\" >&2",
+      "  exit 1",
+      "}"
+    ]
+  }
+}

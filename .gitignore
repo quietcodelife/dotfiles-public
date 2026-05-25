@@ -1,0 +1,7 @@
+.DS_Store
+fish_variables
+*.local
+*.bak
+*.tmp
+node_modules/
+.cache/

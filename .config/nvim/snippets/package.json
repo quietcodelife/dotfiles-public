@@ -1,0 +1,23 @@
+{
+  "name": "stilldev-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "dockerfile",
+        "path": "./dockerfile.json"
+      },
+      {
+        "language": ["yaml", "yml"],
+        "path": "./yaml.json"
+      },
+      {
+        "language": ["terraform", "hcl"],
+        "path": "./terraform.json"
+      },
+      {
+        "language": ["sh", "bash", "zsh"],
+        "path": "./shell.json"
+      }
+    ]
+  }
+}

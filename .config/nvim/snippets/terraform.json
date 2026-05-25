@@ -1,0 +1,54 @@
+{
+  "Terraform provider": {
+    "prefix": "tfprovider",
+    "description": "Terraform required provider block",
+    "body": [
+      "terraform {",
+      "  required_version = \">= ${1:1.6.0}\"",
+      "",
+      "  required_providers {",
+      "    ${2:aws} = {",
+      "      source  = \"${3:hashicorp/aws}\"",
+      "      version = \"~> ${4:5.0}\"",
+      "    }",
+      "  }",
+      "}",
+      "",
+      "provider \"${2:aws}\" {",
+      "  region = var.${5:region}",
+      "}"
+    ]
+  },
+  "Terraform variable": {
+    "prefix": "tfvar",
+    "description": "Terraform variable block",
+    "body": [
+      "variable \"${1:name}\" {",
+      "  description = \"${2:Description}\"",
+      "  type        = ${3:string}",
+      "  default     = ${4:null}",
+      "}"
+    ]
+  },
+  "Terraform output": {
+    "prefix": "tfout",
+    "description": "Terraform output block",
+    "body": [
+      "output \"${1:name}\" {",
+      "  description = \"${2:Description}\"",
+      "  value       = ${3:value}",
+      "}"
+    ]
+  },
+  "Terraform module": {
+    "prefix": "tfmodule",
+    "description": "Terraform module block",
+    "body": [
+      "module \"${1:name}\" {",
+      "  source = \"${2:./modules/name}\"",
+      "",
+      "  ${3:key} = ${4:value}",
+      "}"
+    ]
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "Docker Compose service": {
+    "prefix": "compose",
+    "description": "Docker Compose service skeleton",
+    "body": [
+      "services:",
+      "  ${1:app}:",
+      "    image: ${2:image:tag}",
+      "    ports:",
+      "      - \"${3:3000}:${3:3000}\"",
+      "    environment:",
+      "      ${4:NODE_ENV}: ${5:production}",
+      "    restart: unless-stopped"
+    ]
+  },
+  "Kubernetes Deployment": {
+    "prefix": "kdeploy",
+    "description": "Kubernetes Deployment manifest",
+    "body": [
+      "apiVersion: apps/v1",
+      "kind: Deployment",
+      "metadata:",
+      "  name: ${1:app}",
+      "  labels:",
+      "    app: ${1:app}",
+      "spec:",
+      "  replicas: ${2:2}",
+      "  selector:",
+      "    matchLabels:",
+      "      app: ${1:app}",
+      "  template:",
+      "    metadata:",
+      "      labels:",
+      "        app: ${1:app}",
+      "    spec:",
+      "      containers:",
+      "        - name: ${1:app}",
+      "          image: ${3:image:tag}",
+      "          ports:",
+      "            - containerPort: ${4:3000}",
+      "          readinessProbe:",
+      "            httpGet:",
+      "              path: ${5:/health}",
+      "              port: ${4:3000}",
+      "            initialDelaySeconds: 5",
+      "            periodSeconds: 10"
+    ]
+  },
+  "Kubernetes Service": {
+    "prefix": "ksvc",
+    "description": "Kubernetes Service manifest",
+    "body": [
+      "apiVersion: v1",
+      "kind: Service",
+      "metadata:",
+      "  name: ${1:app}",
+      "spec:",
+      "  selector:",
+      "    app: ${1:app}",
+      "  ports:",
+      "    - name: http",
+      "      port: ${2:80}",
+      "      targetPort: ${3:3000}",
+      "  type: ${4:ClusterIP}"
+    ]
+  },
+  "GitHub Actions Node CI": {
+    "prefix": "gha",
+    "description": "GitHub Actions workflow for Node.js",
+    "body": [
+      "name: ${1:CI}",
+      "",
+      "on:",
+      "  pull_request:",
+      "  push:",
+      "    branches:",
+      "      - ${2:main}",
+      "",
+      "jobs:",
+      "  test:",
+      "    runs-on: ubuntu-latest",
+      "    steps:",
+      "      - uses: actions/checkout@v4",
+      "      - uses: actions/setup-node@v4",
+      "        with:",
+      "          node-version: ${3:22}",
+      "          cache: npm",
+      "      - run: npm ci",
+      "      - run: npm test",
+      "      - run: npm run build"
+    ]
+  }
+}
