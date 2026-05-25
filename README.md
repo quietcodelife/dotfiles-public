@@ -2,8 +2,6 @@
 
 Public dotfiles for my daily macOS development setup.
 
-Inspired by craftzdog's dotfiles approach: keep the important configuration in one public repo, make it easy to inspect, copy and restore on a fresh machine.
-
 ## Included
 
 - `nvim` - LazyVim based Neovim setup for development and DevOps work
