@@ -10,6 +10,9 @@ if status is-interactive
     # Edytor domyślny
     set -gx EDITOR nvim
 
+    # Czytelniejszy prompt: pusta linia między outputem komendy a następnym promptem
+    set -g tide_prompt_add_newline_before true
+
     # PATH
     set -gx PATH ~/.local/bin $PATH
     set -gx PATH ~/bin $PATH
