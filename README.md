@@ -54,6 +54,8 @@ Existing files are moved to:
 
 ## Neovim
 
+<img src="assets/Nvim.png" alt="Neovim setup" width="900">
+
 Main features:
 
 - LazyVim based setup
@@ -98,6 +100,8 @@ fisher update
 This repo intentionally does not include `fish_variables`, because it is machine-local state and can contain private or noisy values.
 
 ## WezTerm
+
+<img src="assets/WeZterm.png" alt="WezTerm terminal setup" width="900">
 
 WezTerm uses:
 
